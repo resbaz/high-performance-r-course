@@ -1,7 +1,5 @@
-# High Performance Python Course
+# High Performance R Course
 
-A course explaining how to profile, optimise and parallelise your Python code, and run it on the cloud and HPC.
+A course explaining how to profile, optimise and parallelise your R code, and run it on the cloud and HPC.
 
 Work-in-progress.
-
-Challenges are intended to run in Azure Notebooks, which provides a Conda environment ready-to-go (https://notebooks.azure.com/).
