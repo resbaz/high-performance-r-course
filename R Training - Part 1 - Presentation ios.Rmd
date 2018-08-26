@@ -1,0 +1,111 @@
+---
+title: "Make your R Code Run Faster - Part 1"
+author: "David Perry, Pablo Franco"
+date: "8/26/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What is ResPlat?
+
+- Cloud & High Performance Computing
+- Data Storage & Management
+- Training & Community
+- Part of University Services ??? here for all academic departments
+
+<div class="notes">
+This is my *note*.
+
+So you probably already have basics down for intro course if you are here.
+
+I touch on HPC and cloud here, but the details are covered in seperate courses (or you can work it out on your own from docs).
+
+</div>
+
+## Related Courses
+- Intro to Python
+- HPC
+- Cloud Computing
+- Intro to Pandas
+
+## Today
+- Part 1: Profiling (why is my code slow)
+- Memory?
+- Part 2: Optimization (fix my slow code)
+- Part 3: Parallellization (run multiple bits of code at once)
+- Part 4: Cloud & High Performance Computing (f%^$ it, gimme a bigger computer please)
+
+**Goal**: Less waiting, more research.
+
+<div class="notes">
+This is my *note2*.
+I'm going to unleash upon you a feast of tools, technologies, jargon and acronyms.
+
+But just because it's on the table doesn't mean you have to eat it!
+
+And you'll probably forget most of the details when you wake up tomorrow.
+
+That's okay!
+
+These slides are here for you later, Google is your friend, and we're here to help. If nothing else, remember that you don't have to tolerate slow code if you don't want to, you do have options.
+</div>
+
+## After the Hangover
+
+- Link to slides/code: https://github.com/resbaz/high-performance-r-course
+- [Advanced R Book](http://adv-r.had.co.nz/Performance.html) 
+- We are here to help:
+  - David Pery: perry.d@unimelb.edu.au
+  - Pablo Franco: pablo.franco.dn@gmail.com
+  
+## Part 1: Profiling
+
+Where is our code slow?: 
+  - Remember we want to work smarter not harder: It's only worth optimising the code that could make a *significant* difference.
+  - Let's find the bottleneck(s)!
+    - [Microbenchmark](https://cran.r-project.org/web/packages/microbenchmark/)
+    - 
+  
+
+<div class="notes">
+Before we do anything else, we should figure out where our code is slow. It's no use throwing a bunch of fancy tricks at the problem if you don't know where it lies. Profiling will help you figure out what's taking the most time in your code, and focus your efforts there.
+</div>
+
+
+## Timing your code with Microbenchmark
+
+```{r}
+#install.packages("microbenchmark")
+library(microbenchmark)
+
+x <- runif(100)
+microbenchmark(
+  sqrt(x),
+  x ^ 0.5
+)
+```
+
+Instead of using `microbenchmark()`, you could use the built-in function `system.time()`. But `system.time()` is much less precise.
+
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
