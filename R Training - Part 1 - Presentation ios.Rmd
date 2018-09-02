@@ -6,7 +6,7 @@ output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## What is ResPlat?
@@ -14,10 +14,14 @@ knitr::opts_chunk$set(echo = FALSE)
 - Cloud & High Performance Computing
 - Data Storage & Management
 - Training & Community
-- Part of University Services ??? here for all academic departments
+- Part of University Services: Here for all academic departments
+
+<p align="center"> 
+<img src="Images/resbaz.png" width =400>
+</p>
+<!-- ![Caption for the picture.](resbaz.png) -->
 
 <div class="notes">
-This is my *note*.
 
 So you probably already have basics down for intro course if you are here.
 
@@ -31,6 +35,13 @@ I touch on HPC and cloud here, but the details are covered in seperate courses (
 - Cloud Computing
 - Intro to Pandas
 
+## Improving the speed of your R code
+>"R is not a fast language. This is not an accident. R was purposely designed to make data analysis and statistics easier for you to do. It was not designed to make life easier for your computer." 
+
+-- *Hadley Wickham (Advanced R)*
+
+
+
 ## Today
 - Part 1: Profiling (why is my code slow)
 - Memory?
@@ -41,7 +52,6 @@ I touch on HPC and cloud here, but the details are covered in seperate courses (
 **Goal**: Less waiting, more research.
 
 <div class="notes">
-This is my *note2*.
 I'm going to unleash upon you a feast of tools, technologies, jargon and acronyms.
 
 But just because it's on the table doesn't mean you have to eat it!
@@ -56,18 +66,21 @@ These slides are here for you later, Google is your friend, and we're here to he
 ## After the Hangover
 
 - Link to slides/code: https://github.com/resbaz/high-performance-r-course
-- [Advanced R Book](http://adv-r.had.co.nz/Performance.html) 
+- Many of our slides are based on the [Advanced R Book](http://adv-r.had.co.nz/Performance.html) 
 - We are here to help:
   - David Pery: perry.d@unimelb.edu.au
   - Pablo Franco: pablo.franco.dn@gmail.com
   
+*Throughout these slides you can press 'p' to see the slide notes.*
+  
 ## Part 1: Profiling
 
-Where is our code slow?: 
+- Where is our code slow?: 
   - Remember we want to work smarter not harder: It's only worth optimising the code that could make a *significant* difference.
   - Let's find the bottleneck(s)!
     - [Microbenchmark](https://cran.r-project.org/web/packages/microbenchmark/)
-    - 
+    - [profvis](https://rstudio.github.io/profvis/index.html)
+      - The new *lineprof*
   
 
 <div class="notes">
@@ -75,10 +88,9 @@ Before we do anything else, we should figure out where our code is slow. It's no
 </div>
 
 
-## Timing your code with Microbenchmark
+## Time your code with Microbenchmark
 
-```{r}
-#install.packages("microbenchmark")
+```{r echo=TRUE}
 library(microbenchmark)
 
 x <- runif(100)
@@ -90,22 +102,155 @@ microbenchmark(
 
 Instead of using `microbenchmark()`, you could use the built-in function `system.time()`. But `system.time()` is much less precise.
 
+<div class="notes">
+By default, microbenchmark() runs each expression 100 times (controlled by the times parameter). In the process, it also randomises the order of the expressions. It summarises the results with a minimum (min), lower quartile (lq), median, upper quartile (uq), and maximum (max). Focus on the median, and use the upper and lower quartiles (lq and uq) to get a feel for the variability. In this example, you can see that using the special purpose sqrt() function is faster than the general exponentiation operator.
+</div>
 
-## Slide with Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
-## Slide with R Output
+66. TODO's
+What is overhead?
+Does mcapply ahs issues in windows?
+Define: Cores/ CPU???s / Cluster
+What does every element in system.time mean?
+Read 2 David's Docs
+David Perry: Can you do the spartan Demo?
 
-```{r cars, echo = TRUE}
-summary(cars)
+
+## Memory allocation
+
+library(pryr)
+
+x <- 1:1e6
+object_size(x)
+
+y <- list(x, x, x)
+object_size(y)
+
+mem_used()
+
+mem_change(rm(y))
+
+## 66. Add "Profvis section"
+### time
+### Memory
+
+profvis??
+There are two downsides to profiling:
+
+read_delim() only takes around half a second, but profiling can, at best, capture memory usage every 1 ms. This means we???ll only get about 500 samples.
+
+Since GC is lazy, we can never tell exactly when memory is no longer needed.
+
+You can work around both problems by using torture = TRUE, which forces R to run GC after every allocation (see gctorture() for more details). This helps with both problems because memory is freed as soon as possible, and R runs 10???100x slower. This effectively makes the resolution of the timer greater, so that you can see smaller allocations and exactly when memory is no longer needed
+
+#Profvis
+The code panel also shows memory allocation and deallocation. Interpreting this information can be a little tricky, because it does not necessarily reflect memory allocated and deallcated at that line of code. The sampling profiler records information about memory allocations that happen between the previous sample and the current one. This means that the allocation/deallocation values on that line may have actually occurred in a previous line of code.
+
+The profiling data has some limitations: some internal R functions don???t show up in the 
+
+##How it works:
+Profvis uses data collected by Rprof, which is part of the base R distribution. At each time interval (profvis uses a default interval of 10ms), the profiler stops the R interpreter, looks at the current function call stack, and records it to a file. Because it works by sampling, the result isn???t deterministic. Each time you profile your code, the result will be slightly different
+
+TIp: Opening and saving profiles: Profiles can be saved for sharing or viewing in the future. Profile files have extension  .Rprofvis. If you wish to share a profile for viewing in a web browser, you can simply rename the file to have an  .html extension.
+
+
+##Example form profvis:
+https://rstudio.github.io/profvis/examples.html
+
+
+
+
+## Part 2: Optimise your code
+
+## Before Optimising Orginise your code
+When tackling a bottleneck, you???re likely to come up with multiple approaches. Write a function for each approach, encapsulating all relevant behaviour. This makes it easier to check that each approach returns the correct result and to time how long it takes to run.
+
+
+## 66.Optimisation Examples:
+- `read.csv()`: specify known column types with colClasses.
+
+- `factor()`: specify known levels with levels.
+
+ - `cut()`: don???t generate labels with `labels = FALSE` if you don???t need them, or, even better, use `findInterval()` as mentioned in the ???see also??? section of the documentation.
+
+ - `unlist(x, use.names = FALSE)` is much faster than `unlist(x)`.
+
+- `interaction()`: if you only need combinations that exist in the data, use `drop = TRUE`.
+
+- If you???re converting continuous values to categorical make sure you know how to use `cut()` and `findInterval()`.
+
+## Vectorisation:
+Using vectorisation for performance means finding the existing R function that is implemented in C and most closely applies to your problem. *The loops in a vectorised function are written in C instead of R. Loops in C are much faster because they have much less overhead.*
+
+`rowSums()`, `colSums()`, `rowMeans()`, and `colMeans()`. These vectorised matrix functions will always be faster than using `apply()`. You can sometimes use these functions to build other vectorised functions.
+
+The loops in a vectorised function are written in C instead of R. Loops in C are much faster because they have much less overhead.
+
+## Avoid Copies:
+A source of slow R code is growing an object with a loop. Whenever you use c(), append(), cbind(), rbind(), or paste() to create a bigger object, R must first allocate space for the new object and then copy the old object to its new home.
+
+### Byte Code Compile your function
+```{r}
+lapply2 <- function(x, f, ...) {
+  out <- vector("list", length(x))
+  for (i in seq_along(x)) {
+    out[[i]] <- f(x[[i]], ...)
+  }
+  out
+}
+
+lapply2_c <- compiler::cmpfun(lapply2)
 ```
+*All base R functions are byte code compiled by default.*
 
-## Slide with Plot
 
-```{r pressure}
-plot(pressure)
-```
+## Parallelise
+
+Explain Core and CPU's (Processors) and Node (Computer)
+https://nceas.github.io/oss-lessons/parallel-computing-in-r/parallel-computing-in-r.html
+
+
+When parallelizing jobs, one can:
+
+Use the multiple cores on a local computer through mclapply
+Use multiple processors on local (and remote) machines using makeCluster and clusterApply
+
+In this approach, one has to manually copy data and code to each cluster member using clusterExport
+This is extra work, but sometimes gaining access to a large cluster is worth it
+
+
+Parallelize using: 
+library(parallel)#This is a base pacakge and thus need no installing, but does require calling it
+library(MASS)
+mclapply.. copy code.... but use Microbenchmark instead of system.time (Should I, system.time is also used in Advanced R)
+
+Parallelize using: foreach and doParallel
+
+### Two types of parallelisation:
+http://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/parallel.html
+Socket vs fork:
+Fork:mcapply (ParLapply as well, but more complicated...). DOesn't work on windows
+
+Socket: ParLapply. Work on all Windows, linux & mac. 
+Run this as it is done in dept.stat.lsa....
+
+
+MCapply: Copy code in Advanced R for mac + windows. Discuss differences. Are this still applicable?
+
+## Rewrite functions in C++
+library(Rcpp)
+
+cppFunction('int add(int x, int y, int z) {
+  int sum = x + y + z;
+  return sum;
+}')
+# add works like a regular R function
+add
+
+To compile the C++ code, use sourceCpp("path/to/file.cpp").
+
+Rcpp provides a lot of syntactic ???sugar??? to ensure that C++ functions work very similarly to their R equivalents. In fact, Rcpp sugar makes it possible to write efficient C++ code that looks almost identical to its R equivalent. If there???s a sugar version of the function you???re interested in, you should use it: it???ll be both expressive and well tested. Sugar functions aren???t always faster than a handwritten equivalent, but they will get faster in the future as more time is spent on optimising Rcpp.
+
+
 
