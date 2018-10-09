@@ -15,9 +15,9 @@ library(profvis)
 # write.csv2(newDiamonds2,file="new_diamonds.csv",row.names=FALSE)
 
 profvis({
-new_diamonds = read.csv2("new_diamonds.csv")
+new_diamonds = read.csv2("datasets/new_diamonds.csv")
 
-new_diamonds2 = read.csv2("new_diamonds.csv", colClasses = c("numeric",
+new_diamonds2 = read.csv2("datasets/new_diamonds.csv", colClasses = c("numeric",
                                                  "character","numeric"))
 })
 
