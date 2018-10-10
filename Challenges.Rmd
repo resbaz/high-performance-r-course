@@ -77,7 +77,7 @@ microbenchmark(
 ### Solution
 
 `lapply2` applies a function to each elelement of a list.
-```{r}
+```{r eval=TRUE}
 lapply2 <- function(x, f, ...) {
   out <- vector("list", length(x))
   for (i in seq_along(x)) {

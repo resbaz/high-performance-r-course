@@ -227,9 +227,9 @@ lapply2_c <- compiler::cmpfun(lapply2)
 
 ## Challenge `r challenge()`
 
-**What does the lapply2 function do? Check compute time difference between `lapply` and `lappy2`.**
+**What does the lapply2 function do? Check compute time difference between `lapply` and `lapply2`.**
 
-- To do this you could appley the function `mean` to `x=list(1:200,1:10,100:340,10:90)`
+- To do this you could apply the function `mean` to `x=list(1:200,1:10,100:340,10:90)`
 
 ## Rewrite functions in C++
 
@@ -287,17 +287,17 @@ Find the mateiral we will be following [here](http://dept.stat.lsa.umich.edu/~je
 
 - **Forking**: Copies the entire current version of R and moves it to a new core.
 
-There are various pro’s and con’s to the two approaches...
+There are various pro???s and con???s to the two approaches...
 
 ## Socket:
 
 >- Pro: Works on any system (including Windows).
 
->- Pro: Each process on each node is unique so it can’t cross-contaminate.
+>- Pro: Each process on each node is unique so it can???t cross-contaminate.
 
 >- Con: Each process is unique so it will be slower
 
->- Con: Things such as package loading need to be done in each process separately. Variables defined on your main version of R don’t exist on each core unless explicitly placed there.
+>- Con: Things such as package loading need to be done in each process separately. Variables defined on your main version of R don???t exist on each core unless explicitly placed there.
 
 >- Con: More complicated to implement.
 
@@ -305,7 +305,7 @@ There are various pro’s and con’s to the two approaches...
 
 >- Con: Only works on POSIX systems (Mac, Linux, Unix, BSD) and not Windows.
 
->- Con: Because processes are duplicates, it can cause issues specifically with random number generation (which should usually be handled by parallel in the background) or when running in a GUI (such as RStudio). This doesn’t come up often, but if you get odd behavior, this may be the case.
+>- Con: Because processes are duplicates, it can cause issues specifically with random number generation (which should usually be handled by parallel in the background) or when running in a GUI (such as RStudio). This doesn???t come up often, but if you get odd behavior, this may be the case.
 
 >- Pro: Faster than sockets.
 
