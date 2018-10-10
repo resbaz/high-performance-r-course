@@ -7,11 +7,11 @@ A course explaining how to make your R-Code run faster.
 
 ### The Material is divided into two sections
 
-* **Part 1:** See the Presentation on how to make your code run faster in your computer [here](https://resbaz.github.io/high-performance-r-course/Part1_Presentation.html)
+* **Part 1:** Presentation on how to make your code run faster in your computer [here](https://resbaz.github.io/high-performance-r-course/Part1_Presentation.html)
     + Corresponding challenges with solutions ([here](https://resbaz.github.io/high-performance-r-course/Challenges.nb.html))
 
 
-* **Part 2:** See the Cloud and HPC material [here](http://htmlpreview.github.io/?https://github.com/resbaz/high-performance-r-course/blob/master/Part2_HPC.html)
+* **Part 2:** Cloud and HPC at Melbourne University [here](http://htmlpreview.github.io/?https://github.com/resbaz/high-performance-r-course/blob/master/Part2_HPC.html)
 
 TODO: HPC bit is missing in the repository.
 Work-in-progress.
