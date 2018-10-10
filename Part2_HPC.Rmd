@@ -1,0 +1,67 @@
+---
+title: "Part 2 - Cloud & High Performance Computing"
+author: "Pablo Franco"
+date: "10/10/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Most of the techniques we've discussed so far are relevant to your personal computer, but what if this still isn't enough and you need a bigger computer?
+
+Don't worry, you needn't buy your own, we have lots of resources available for you to use for free!
+
+# What resources are available to me @ UoM?
+
+* Nectar Research Cloud
+
+* High Performance Computing (HPC) - Spartan
+
+* National supercomputing centres via competitive allocation process - NCI (Canberra) and Pawsey (Perth)
+
+### Nectar Research Cloud
+
+* Create your own virtual machines (VMs) in the cloud.
+
+* Create small VMs (1 core, ~1GB RAM) to big VMs (12+ cores, 30GB RAM).
+
+* Install whatever you like.
+
+* Self-managed.
+
+* Free!
+
+### High Performance Computing
+
+* i.e. a supercomputer!
+
+* Larger scale and managed, but you might have to wait in a queue
+
+* Shared resource
+
+* Software usually installed for you
+
+* Linux apps only
+
+* Our local supercomputer = Spartan
+
+* Also free!
+
+### Which to choose?
+Both work well with R.
+
+Need complete control? Don't like sharing/waiting? Hosting a web service? => Nectar Cloud
+
+Don't want to manage a system yourself? Need enormous scale? => HPC
+
+# Nectar Resources
+For self-training, check out http://training.nectar.org.au/
+
+Or be notified of next in-person training at: http://melbourne.resbaz.edu.au/participate
+
+# HPC Resources
+Documentation and account signup instructions at: https://dashboard.hpc.unimelb.edu.au/
+
+We run dedicated HPC training, including introduction to Linux command line, signup at: http://melbourne.resbaz.edu.au/participate
