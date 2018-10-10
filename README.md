@@ -5,6 +5,8 @@ A course explaining how to make your R-Code run faster.
 * We also explore how to use make the best of your computer's power with parallelisation.
 * The final part of the course explores what other options there are @unimelb for running your code in the cloud or at a high preformance computer.
 
+### The Material is divided into two sections
+
 * **Part 1:** See the Presentation on how to make your code run faster in your computer [here](https://resbaz.github.io/high-performance-r-course/Part1_Presentation.html)
     + Corresponding challenges with solutions ([here](https://resbaz.github.io/high-performance-r-course/Challenges.nb.html))
 
