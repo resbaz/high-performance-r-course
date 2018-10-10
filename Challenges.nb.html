@@ -1706,19 +1706,11 @@ $(document).ready(function () {
 <h3>Solution</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShwcm9mdmlzKVxuIyBuZXdEaWFtb25kcz1yYmluZChkaWFtb25kcywgZGlhbW9uZHMsZGlhbW9uZHMsIGRpYW1vbmRzKVxuIyBuZXdEaWFtb25kczIgPSBuZXdEaWFtb25kcyAlPiUgc2VsZWN0KGNhcmF0LGN1dCwgcHJpY2UpXG4jIHdyaXRlLmNzdjIobmV3RGlhbW9uZHMyLGZpbGU9XCJuZXdfZGlhbW9uZHMuY3N2XCIscm93Lm5hbWVzPUZBTFNFKVxuXG5wcm9mdmlzKHtcbm5ld19kaWFtb25kcyA9IHJlYWQuY3N2MihcImRhdGFzZXRzL25ld19kaWFtb25kcy5jc3ZcIilcblxubmV3X2RpYW1vbmRzMiA9IHJlYWQuY3N2MihcImRhdGFzZXRzL25ld19kaWFtb25kcy5jc3ZcIiwgY29sQ2xhc3NlcyA9IGMoXCJudW1lcmljXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJjaGFyYWN0ZXJcIixcIm51bWVyaWNcIikpXG59KVxuXG5gYGAifQ== -->
-<pre class="r"><code>library(profvis)
-# newDiamonds=rbind(diamonds, diamonds,diamonds, diamonds)
-# newDiamonds2 = newDiamonds %&gt;% select(carat,cut, price)
-# write.csv2(newDiamonds2,file=&quot;new_diamonds.csv&quot;,row.names=FALSE)
-
-profvis({
-new_diamonds = read.csv2(&quot;datasets/new_diamonds.csv&quot;)
-
-new_diamonds2 = read.csv2(&quot;datasets/new_diamonds.csv&quot;, colClasses = c(&quot;numeric&quot;,
-                                                 &quot;character&quot;,&quot;numeric&quot;))
-})
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShwcm9mdmlzKVxuIyBuZXdEaWFtb25kcz1yYmluZChkaWFtb25kcywgZGlhbW9uZHMsZGlhbW9uZHMsIGRpYW1vbmRzKVxuIyBuZXdEaWFtb25kczIgPSBuZXdEaWFtb25kcyAlPiUgc2VsZWN0KGNhcmF0LGN1dCwgcHJpY2UpXG4jIHdyaXRlLmNzdjIobmV3RGlhbW9uZHMyLGZpbGU9XFxuZXdfZGlhbW9uZHMuY3N2XFwscm93Lm5hbWVzPUZBTFNFKVxuXG5wcm9mdmlzKHtcbm5ld19kaWFtb25kcyA9IHJlYWQuY3N2MihcXGRhdGFzZXRzL25ld19kaWFtb25kcy5jc3ZcXClcblxubmV3X2RpYW1vbmRzMiA9IHJlYWQuY3N2MihcXGRhdGFzZXRzL25ld19kaWFtb25kcy5jc3ZcXCwgY29sQ2xhc3NlcyA9IGMoXFxudW1lcmljXFwsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXFxjaGFyYWN0ZXJcXCxcXG51bWVyaWNcXCkpXG59KVxuXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r library(profvis) # newDiamonds=rbind(diamonds, diamonds,diamonds, diamonds) # newDiamonds2 = newDiamonds %&gt;% select(carat,cut, price) # write.csv2(newDiamonds2,file=_diamonds.csv,row.names=FALSE)</p>
+<p>profvis({ new_diamonds = read.csv2(/new_diamonds.csv)</p>
+<p>new_diamonds2 = read.csv2(/new_diamonds.csv, colClasses = c(, ,)) })</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1735,21 +1727,16 @@ new_diamonds2 = read.csv2(&quot;datasets/new_diamonds.csv&quot;, colClasses = c(
 <h3>Solution</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShtaWNyb2JlbmNobWFyaylcblxuZGlhbW9uZHNfbnVtID0gbmV3X2RpYW1vbmRzWyxjKDEsMyldXG5cbm1pY3JvYmVuY2htYXJrKFxuICBiYXNlOjpjb2xNZWFucyhkaWFtb25kc19udW0pLFxuICBhcHBseShkaWFtb25kc19udW0sMixtZWFuKVxuKVxuXG5gYGAifQ== -->
-<pre class="r"><code>library(microbenchmark)
-
-diamonds_num = new_diamonds[,c(1,3)]
-
-microbenchmark(
-  base::colMeans(diamonds_num),
-  apply(diamonds_num,2,mean)
-)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShtaWNyb2JlbmNobWFyaylcblxuZGlhbW9uZHNfbnVtID0gbmV3X2RpYW1vbmRzWyxjKDEsMyldXG5cbm1pY3JvYmVuY2htYXJrKFxuICBiYXNlOjpjb2xNZWFucyhkaWFtb25kc19udW0pLFxuICBhcHBseShkaWFtb25kc19udW0sMixtZWFuKVxuKVxuXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r library(microbenchmark)</p>
+<p>diamonds_num = new_diamonds[,c(1,3)]</p>
+<p>microbenchmark( base::colMeans(diamonds_num), apply(diamonds_num,2,mean) )</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiVW5pdDogbWlsbGlzZWNvbmRzXG4ifQ== -->
 <pre><code>Unit: milliseconds</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERpaXVCaVlHQmdZbUJtQlpMTVFDWUxFNUJnWkdCaDRBVFJGUXdNek1KQUJnZVE1Z1VyQkVtQ2FSU0ZiRG1wWmFrNXhVQ1dBRmdXSWlxVGxGaWNhbVdWbkovam01cVlWNnlSa3BtWW01K1hVaHlmVjVxckNWT1RXRkNRVTRraXBhTmdwS09RQzlTaGlXWUxhM0pPWWpITUVyalZhWW5KSmZsRlFOWS9JT1lEV1cvL3RmSmhidTdCSlE0QzMyNVA0WDl6Rnk3K1BXdW13VDdlZHc1aWZNS1hwV2VudzhRZEdONjYreHhkWGVBZ2Q5UG5sVjM1VnJqNjMwVUJlbTlxcGpsSWZOb3VySzVpQkJmL1YzRHhsN0Y1cW9OQ2JXVnYxL1I1Y0hPa2N3NjZNUFVGT0xnZTdqdndvOWtFTGg3SkFBWXdHdDFiZVltNXFUQnZjVUFGV1ZJckNvcWdiT2JjekR3b2t5bW5FS1lBRkVLd01NaE5CUVlnWEUxcElWeGpZZ1hja3RTeXhCdzBtMWxLOHpKTDBNS1RKemN6Snllek9EVVpGQjFvNmptTDhzdjFZSzdGa2g2WS82TVp4cFdTV0pLb2wxWUUxQUtKSUJUajJQTUxTakx6ODRDR01ZRVNHU3VhWnNZaU5BSCswanlRNVNtNnlSbWxlZG02RmlBTG9BNWdnRG9JNmhnNG13TmlKUXZNWWF5d0VFdk5TOC9NUzRVRlRrNWlVbW9PbE1NSDlDVFlqM29GUlpsNUpUQ2ZBRVdMOVVyeVN4Smg2cmlBNlJvbUFrbDgvd0MxQ1VjVVVnTUFBQT09In0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjoiZGF0YS5mcmFtZSIsIm5jb2wiOjgsIm5yb3ciOjJ9LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREaWl1QmlZR0JnWW1CbUJaTE1RQ1lMRTVCZ1pHQmg0QVRSRlF3TXpNSkFCZ2VRNWdVckJFbUNhUlNGYkRtcFphazV4VUNXQUZnV0lpcVRsRmljYW1XVm5KL2ptNXFZVjZ5UmtwbVltNStYVWh5ZlY1cXJDVk9UV0ZDUVU0a2lwYU5ncEtPUUM5U2hpV1lMYTNKT1lqSE1FcmpWYVluSkpmbEZRTlkvSU9ZRFdXLy90ZkpoYnU3QkpRNEMzMjVQNFg5ekZ5NytQV3Vtd1Q3ZWR3NWlmTUtYcFdlbnc4UWRHTjY2K3h4ZFhlQWdkOVBubFYzNVZyajYzMFVCZW05cXBqbElmTm91cks1aUJCZi9WM0R4bDdGNXFvTkNiV1Z2MS9SNWNIT2tjdzY2TVBVRk9MZ2U3anZ3bzlrRUxoN0pBQVl3R3QxYmVZbTVxVEJ2Y1VBRldWSXJDb3FnYk9iY3pEd29reW1uRUtZQUZFS3dNTWhOQlFZZ1hFMXBJVnhqWWdYY2t0U3l4QncwbTFsSzh6SkwwTUtUSnpjekp5ZXpPRFVaRkIxbzZqbUw4c3YxWUs3RmtoNlkvNk1aeHBXU1dKS29sMVlFMUFLSklCVGoyUE1MU2pMejg0Q0dNWUVTR1N1YVpzWWlOQUgrMGp5UTVTbTZ5Um1sZWRtNkZpQUxvQTVnZ0RvSTZoZzRtd05pSlF2TVlheXdFRXZOUzgvTVM0VUZUazVpVW1vT2xNTUg5Q1RZajNvRlJabDVKVENmQUVXTDlVcnlTeEpoNnJpQTZSb21Ba2w4L3dDMUNVY1VVZ01BQUE9PSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["expr"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["uq"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["neval"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"base::colMeans(diamonds_num)","2":"1.342256","3":"1.463525","4":"2.115859","5":"1.715409","6":"1.902544","7":"6.856206","8":"100"},{"1":"apply(diamonds_num, 2, mean)","2":"4.241072","3":"5.513748","4":"7.712207","5":"6.237027","6":"8.245068","7":"43.527794","8":"100"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
@@ -1771,20 +1758,27 @@ microbenchmark(
 <h3>Solution</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWljcm9iZW5jaG1hcmsoXG4gIG5ld3ZlY3RvciA9IGMoMToxMDAwKSxcbiAgbmV3dmVjdG9yMiA9IGNyZWF0ZV92ZWN0b3IoMTAwMClcbilcblxuYGBgIn0= -->
-<pre class="r"><code>microbenchmark(
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5jcmVhdGVfdmVjdG9yID1mdW5jdGlvbihuKXtcbiAgdmVjID0gYygpXG4gIGZvcihpIGluIDE6bil7XG4gICAgdmVjPWModmVjLGkpXG4gIH1cbn1cblxubWljcm9iZW5jaG1hcmsoXG4gIG5ld3ZlY3RvciA9IGMoMToxMDAwKSxcbiAgbmV3dmVjdG9yMiA9IGNyZWF0ZV92ZWN0b3IoMTAwMClcbilcbmBgYCJ9 -->
+<pre class="r"><code>
+create_vector =function(n){
+  vec = c()
+  for(i in 1:n){
+    vec=c(vec,i)
+  }
+}
+
+microbenchmark(
   newvector = c(1:1000),
   newvector2 = create_vector(1000)
-)
-</code></pre>
+)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiVW5pdDogbWljcm9zZWNvbmRzXG4ifQ== -->
 <pre><code>Unit: microseconds</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERpaXVCaVlHQmdZbUJtQlpMTVFDWUxFNUJnWkdCaDRBVFJGUXdNek1KQUJnZVE1Z1VyQkVtQ2FSU0ZiRG1wWmFrNXhVQ1dBRmdXSXNxWmwxcGVscHBja2w4RUZlQ0NDeGloR2NDYW5KTllETk1QTnpVdEVheVpnZUVmRVBPQlRIWlFGT2V5TFZoODNXR3krdExId2QvUHc4V1ZwQjY2cnhPcGRwaWFrQ2RTOWRBRExxNTZzemt3WW9lR3c4SVRZcWJQbldiQnhWWDQ1MjdTNVF0em1NWDJoc05RN1JWY1hHMmE2OEpUQjVvZEZzZGZWSHRaY1JVdWJxVXlHMmpoRDRmVGdveXZXK1Yyd01VakdjQUFScU43S3k4eE54WG1MUTZvSUV0cVJRRXNSSmh6TS9PZ1RLYWNRcGlDM05SRW1DaGJibXBLSnB6SFZGb0kxNWhZQWJja3RTd3hCODFtbHRLOHpCSzA4T1RKelV3dXlpOU9UYzdQU3lsR1U4OVpsRit1QjNNdGxxaG0vbzltR0ZkS1lrbWlYbG9SVUFza2dsQ01ZODh2S01uTXp3TWF4Z1JLUDZ4b21obUwwQVQ0Uy9OQWxxZm9KbWVVNW1YckdvRXNnRHFBQWVvZ3FHUGdiQTZJbFN3d2g3SENRaXcxTHowekx4VVdPRG1KU2FrNVVBNGYwSk5nUCtvVkZHWG1sY0I4QWhRdDFpdkpMMG1FcWVOS3pzK0JpVUFTM3o4QTMwRUs3UzBEQUFBPSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERpaXVCaVlHQmdZbUJtQlpMTVFDWUxFNUJnWkdCaDRBVFJGUXdNek1KQUJnZVE1Z1VyQkVtQ2FSU0ZiRG1wWmFrNXhVQ1dBRmdXSXNxWmwxcGVscHBja2w4RUZlQ0NDeGloR2NDYW5KTllETk1QTnpVdEVheVpnZUVmRVBPQlRIWlFxRTZKa2xuRDRURHBnZjk5NjVRb3VMaVNjTW1lckxwZkRsT1ZuNytmdTBrUExxNjF6dVVYcTRpTnc2TEw4VUYvMU1MaDR1clN6M082bmFjNXpPUUwrZnQ1bXh0Y1hMdmlDb2p2c0loQjl2TTIxMFZ3Y2ErWDV0N0hsbjl3dUd5cEFySUhMaDdKQUFZd0d0MWJlWW01cVRCdmNVQUZXVklyQ21BaHdweWJtUWRsTXVVVXdoVGtwaWJDUk5seVUxTXk0VHltMGtLNHhzUUt1Q1dwWllrNWFEYXpsT1psbHFDRkowOXVabkpSZm5GcWNuNWVTakdhZXM2aS9ISTltR3V4UkRYemZ6VER1RklTU3hMMTBvcUFXaUFSaEdJY2UzNUJTV1orSHRBd0psRDZZVVhUekZpRUpzQmZtZ2V5UEVVM09hTTBMMXZYR0dRQjFBRU1VQWRCSFFObmMwQ3NaSUU1akJVV1lxbDU2Wmw1cWJEQXlVbE1TczJCY3ZpQW5nVDdVYStnS0RPdkJPWVRvR2l4WGtsK1NTSk1IVmR5Zmc1TUJKTDQvZ0VBNXB6TzR5MERBQUE9In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["expr"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["uq"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["neval"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"newvector","2":"8.545","3":"9.0525","4":"10.92483","5":"10.0305","6":"11.2935","7":"26.143","8":"100"},{"1":"newvector2","2":"1225.912","3":"1368.1075","4":"2276.04338","5":"1665.7305","6":"2479.9085","7":"13858.015","8":"100"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+{"columns":[{"label":["expr"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["uq"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["neval"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"newvector","2":"8.241","3":"9.038","4":"13.34037","5":"11.5545","6":"13.736","7":"53.822","8":"100"},{"1":"newvector2","2":"1208.078","3":"1352.977","4":"2409.68618","5":"1603.5830","6":"2304.059","7":"19684.574","8":"100"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
@@ -1800,19 +1794,14 @@ microbenchmark(
 <p><code>lapply2</code> applies a function to each elelement of a list.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueD1saXN0KDE6MjAwLDE6MTAwLDEwMDozNDAsMTA6OTAwMDApXG5taWNyb2JlbmNobWFyayhcbiAgbGFwcGx5Mih4LHNkKSxcbiAgbGFwcGx5Ml9jKHgsc2QpLFxuICBsYXBwbHkoeCxzZClcbilcblxuYGBgIn0= -->
-<pre class="r"><code>x=list(1:200,1:100,100:340,10:90000)
-microbenchmark(
-  lapply2(x,sd),
-  lapply2_c(x,sd),
-  lapply(x,sd)
-)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxueD1saXN0KDE6MjAwLDE6MTAwLDEwMDozNDAsMTA6OTAwMDApXG5taWNyb2JlbmNobWFyayhcbiAgbGFwcGx5Mih4LHNkKSxcbiAgbGFwcGx5Ml9jKHgsc2QpLFxuICBsYXBwbHkoeCxzZClcbilcblxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r x=list(1:200,1:100,100:340,10:90000) microbenchmark( lapply2(x,sd), lapply2_c(x,sd), lapply(x,sd) )</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiVW5pdDogbWljcm9zZWNvbmRzXG4ifQ== -->
 <pre><code>Unit: microseconds</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERpaXVCaVlHQmdZbUJtQlpMTVFDWUxFNUJnWkdCaDRBVFJGUXdNek1KQUJnZVE1Z1hTekdCSmtBWXdHMFV4VzA1cVdXcE9NWkFsQUphRmlQTGxKQllVNUZRYWFWVG9LQlNuYUVKRkJhQ2k4Y21vNHJ3UWNaZ2dxZ1dzeVRtSnhURHo0YmFtSlNhWDVCY0JXZjlBdG9Gc2RxalAzT2E2OE5SQmgvcm9rajFaZGI4YzZrTW1BeG4xY1BrdS83VjhZU3dTRG8zODY2WG03eXR6NkJKKzVIdnA0eXE0ZkovSlJuRzlEK3NjdWd2RUovWHh6SFBvOTJhL3dmcjBNMEwvMXpmZHpsTWJIYnJtWk5YOXZLM2swSFUwSlVwbURRZGN2b2M3cytMSzN5OE8zZkVRZGQxdkR6UUw1YzJBeSsvTk10cWdjR1NPdy81MkU4c0lnU1NITGZ1NWdjclk0UEtSREdDQVRxTUhSMTVpYmlvc09EaWdnaXlwRlFWRlVEWnpibVllbE1tVVV3aFRrSnVhQ0JObHkwMU55WVR6bUVvTDRSb1RLK0NXcEpZbDVxRFp6RkthbDFtQ0ZnODh1Wm5KUmZuRnFjbjVlU25GYU9vNWkvTEw5V0N1QlNVanBnYUlmNkJKaVBrL21tRmNLWWtsaVhwcFJVQXRrSWhGTVk0OXY2QWtNejhQYUJnVEtHMnlvbWxtTEVJVDRDL05BMW1lb3B1Y1VacVhyV3NKc2dDYWpobWdEbUtFcG0wWW13TmlKUXZNWWF5d0VFdk5TOC9NUzRVRlRrNWlVbW9PTEtFRFBRbjJvMTVCVVdaZUNjd25RTkZpdlpMOGtrU1lPcTdrL0J5WUNDVFIvZ01BUVRYbGlZa0RBQUE9In0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjoiZGF0YS5mcmFtZSIsIm5jb2wiOjgsIm5yb3ciOjN9LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREaWl1QmlZR0JnWW1CbUJaTE1RQ1lMRTVCZ1pHQmg0QVRSRlF3TXpNSkFCZ2VRNWdYU3pHQkprQVl3RzBVeFcwNXFXV3BPTVpBbEFKYUZpUExsSkJZVTVGUWFhVlRvS0JTbmFFSkZCYUNpOGNtbzRyd1FjWmdncWdXc3lUbUp4VER6NGJhbUpTYVg1QmNCV2Y5QXRvRnNkcWpQM09hNjhOUkJoL3Jva2oxWmRiOGM2a01tQXhuMWNQa3UvN1Y4WVN3U0RvMzg2NlhtN3l0ejZCSis1SHZwNHlxNGZKL0pSbkc5RCtzY3VndkVKL1h4ekhQbzkyYS93ZnIwTTBMLzF6ZmR6bE1iSGJybVpOWDl2SzNrMEhVMEpVcG1EUWRjdm9jN3MrTEszeThPM2ZFUWRkMXZEelFMNWMyQXkrL05NdHFnY0dTT3cvNTJFOHNJZ1NTSExmdTVnY3JZNFBLUkRHQ0FUcU1IUjE1aWJpb3NPRGlnZ2l5cEZRVkZVRFp6Ym1ZZWxNbVVVd2hUa0p1YUNCTmx5MDFOeVlUem1Fb0w0Um9USytDV3BKWWw1cURaekZLYWwxbUNGZzg4dVpuSlJmbkZxY241ZVNuRmFPbzVpL0xMOVdDdUJTVWpwZ2FJZjZCSmlQay9tbUZjS1lrbGlYcHBSVUF0a0loRk1ZNDl2NkFrTXo4UGFCZ1RLRzJ5b21sbUxFSVQ0Qy9OQTFtZW9wdWNVWnFYcldzSnNnQ2FqaG1nRG1LRXBtMFltd05pSlF2TVlheXdFRXZOUzgvTVM0VUZUazVpVW1vT0xLRURQUW4ybzE1QlVXWmVDY3duUU5GaXZaTDhra1NZT3E3ay9CeVlDQ1RSL2dNQVFUWGxpWWtEQUFBPSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["expr"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["uq"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["neval"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"lapply2(x, sd)","2":"502.607","3":"841.9595","4":"966.5865","5":"862.7405","6":"897.4265","7":"7530.198","8":"100"},{"1":"lapply2_c(x, sd)","2":"501.716","3":"545.9605","4":"878.0115","5":"851.5520","6":"875.9905","7":"8071.204","8":"100"},{"1":"lapply(x, sd)","2":"501.286","3":"834.4855","4":"1001.3788","5":"856.6740","6":"893.7190","7":"5311.044","8":"100"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
@@ -1831,27 +1820,17 @@ microbenchmark(
 <h3>Solution</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShSY3BwKVxuXG5jcHBGdW5jdGlvbignaW50IG11bHQoaW50IHgsIGludCB5KSB7XG4gIGludCBwcm9kID0geCAqIHk7XG4gIHJldHVybiBwcm9kO1xufScpXG5cblxueD0xNzYzNVxueT0xMDAwMlxuXG5taWNyb2JlbmNobWFyayhcbiAgYT14KnksXG4gIGI9bXVsdCh4LHkpXG4pXG5gYGAifQ== -->
-<pre class="r"><code>library(Rcpp)
-
-cppFunction('int mult(int x, int y) {
-  int prod = x * y;
-  return prod;
-}')
-
-
-x=17635
-y=10002
-
-microbenchmark(
-  a=x*y,
-  b=mult(x,y)
-)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShSY3BwKVxuXG5jcHBGdW5jdGlvbignaW50IG11bHQoaW50IHgsIGludCB5KSB7XG4gIGludCBwcm9kID0geCAqIHk7XG4gIHJldHVybiBwcm9kO1xufScpXG5cblxueD0xNzYzNVxueT0xMDAwMlxuXG5taWNyb2JlbmNobWFyayhcbiAgYT14KnksXG4gIGI9bXVsdCh4LHkpXG4pXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r library(Rcpp)</p>
+<p>cppFunction(‘int mult(int x, int y) { int prod = x * y; return prod; }’)</p>
+<p>x=17635 y=10002</p>
+<p>microbenchmark( a=x*y, b=mult(x,y) )</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiVW5pdDogbmFub3NlY29uZHNcbiJ9 -->
 <pre><code>Unit: nanoseconds</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUEyMVNQVTdETUJoMTgxUFNJQW9TekwxQkl3UUlNYllTRW51bmRnSGN4S1VSanQwbVRxbkV6QkZBVEQwQ015TVg0QTdzM0lDaDRNVCtJdG5Da3UzM1BiL3Z6L2JvY253U2prT0VrSU5jWDY2dWhKNGpseGJ5VUtmYTF3aTVoeElFY3QrcmhkVmh2UnZDTmlVclFndUpEdXBUN1k0QlRDMjlIMU5jZ0x3Sk1zT3g0TGxFV3ptN1ZhREJOYXJINFBrTTZhSDRteS9Gdi95WS9HejUvZFI3SHcwKzU4T3J0NlBIaHIvOVVQclhucWxQamhXL0VTYS91YWlONFdsTEdQeEUxek1CdWRrV3d4bUJ0Z0pOZW1TOXlEVjJzNVJwNk5BbENES0NnVzFuSkVrYnl5bVhqU05lTjBuSUNsTXJzMWV5VkZqM3Vjc3c0d1dKT1VzS1M5N0orVU1FeGY3enNPNnZGU3RNc01EUkxKY3U2bjJNY0R0OElWTE9aRENuK2kyKzVkektMV0svWkZYeXBCL1BTM2JmUDY4UzZBS1FMa2dYMCtCQXBmU2dNQjh1akxDN2xCRzRHNHFuaEdxaks1dXNlNHdXZWNvRWRDTFpJaEpjWU5DRk1hZkFxTCszL1FQVU5hZVNHd01BQUE9PSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjoiZGF0YS5mcmFtZSIsIm5jb2wiOjgsIm5yb3ciOjJ9LCJyZGYiOiJINHNJQUFBQUFBQUFBMjFTUFU3RE1CaDE4MVBTSUFvU3pMMUJJd1FJTWJZU0VudW5kZ0hjeEtVUmp0MG1UcW5FekJGQVREMENNeU1YNEE3czNJQ2g0TVQrSXRuQ2t1MzNQYi92ei9ib2Nud1Nqa09Fa0lOY1g2NnVoSjRqbHhieVVLZmExd2k1aHhJRWN0K3JoZFZodlJ2Q05pVXJRZ3VKRHVwVDdZNEJUQzI5SDFOY2dMd0pNc094NExsRVd6bTdWYURCTmFySDRQa002YUg0bXkvRnYveVkvR3o1L2RSN0h3MCs1OE9ydDZQSGhyLzlVUHJYbnFsUGpoVy9FU2EvdWFpTjRXbExHUHhFMXpNQnVka1d3eG1CdGdKTmVtUzl5RFYyczVScDZOQWxDREtDZ1cxbkpFa2J5eW1YalNOZU4wbklDbE1yczFleVZGajN1Y3N3NHdXSk9Vc0tTOTdKK1VNRXhmN3pzTzZ2RlN0TXNNRFJMSmN1Nm4yTWNEdDhJVkxPWkRDbitpMis1ZHpLTFdLL1pGWHlwQi9QUzNiZlA2OFM2QUtRTGtnWDArQkFwZlNnTUI4dWpMQzdsQkc0RzRxbmhHcWpLNXVzZTR3V2Vjb0VkQ0xaSWhKY1lOQ0ZNYWZBcUwrMy9RUFVOYWVTR3dNQUFBPT0ifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["expr"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["min"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["uq"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["neval"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"120","3":"127.5","4":"179.56","5":"134.0","6":"161.5","7":"1934","8":"100"},{"1":"b","2":"1357","3":"1470.5","4":"15056.51","5":"1543.5","6":"1949.0","7":"1245556","8":"100"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
@@ -1874,29 +1853,20 @@ microbenchmark(
 <h3>Solution</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShwYXJhbGxlbClcbnRpdGFuaWMgPSByZWFkLmNzdihcImh0dHBzOi8vZ29vLmdsLzRHcXNuelwiKVxudGl0YW5pYz0gbmEub21pdCh0aXRhbmljKVxuXG5zYW1wbGVfbWVhbiA9ZnVuY3Rpb24oaSl7XG4gIG1lYW5fQWdlID0gdGl0YW5pYyAlPiUgXG4gICAgc2FtcGxlX24oMjApICU+JSBcbiAgICBzdW1tYXJpc2UobWVhbl9hZ2U9bWVhbihBZ2UpKSAlPiUgXG4gICAgcHVsbChtZWFuX2FnZSlcbiAgcmV0dXJuKG1lYW5fQWdlKVxufVxuXG5zeXN0ZW0udGltZShsYXBwbHkoMToxMDAwMCwgc2FtcGxlX21lYW4pKVxuYGBgIn0= -->
-<pre class="r"><code>
-library(dplyr)
-library(parallel)
-titanic = read.csv(&quot;https://goo.gl/4Gqsnz&quot;)
-titanic= na.omit(titanic)
-
-sample_mean =function(i){
-  mean_Age = titanic %&gt;% 
-    sample_n(20) %&gt;% 
-    summarise(mean_age=mean(Age)) %&gt;% 
-    pull(mean_age)
-  return(mean_Age)
-}
-
-system.time(lapply(1:10000, sample_mean))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShwYXJhbGxlbClcbnRpdGFuaWMgPSByZWFkLmNzdihcXGh0dHBzOi8vZ29vLmdsLzRHcXNuelxcKVxudGl0YW5pYz0gbmEub21pdCh0aXRhbmljKVxuXG5zYW1wbGVfbWVhbiA9ZnVuY3Rpb24oaSl7XG4gIG1lYW5fQWdlID0gdGl0YW5pYyAlPiUgXG4gICAgc2FtcGxlX24oMjApICU+JSBcbiAgICBzdW1tYXJpc2UobWVhbl9hZ2U9bWVhbihBZ2UpKSAlPiUgXG4gICAgcHVsbChtZWFuX2FnZSlcbiAgcmV0dXJuKG1lYW5fQWdlKVxufVxuXG5zeXN0ZW0udGltZShsYXBwbHkoMToxMDAwMCwgc2FtcGxlX21lYW4pKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r</p>
+<p>library(dplyr) library(parallel) titanic = read.csv(://goo.gl/4Gqsnz) titanic= na.omit(titanic)</p>
+<p>sample_mean =function(i){ mean_Age = titanic %&gt;% sample_n(20) %&gt;% summarise(mean_age=mean(Age)) %&gt;% pull(mean_age) return(mean_Age) }</p>
+<p>system.time(lapply(1:10000, sample_mean))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiICAgdXNlciAgc3lzdGVtIGVsYXBzZWQgXG4gMTMuMDE1ICAgMC4wNTUgIDEzLjI5MCBcbiJ9 -->
 <pre><code>   user  system elapsed 
  13.015   0.055  13.290 </code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3lzdGVtLnRpbWUobWNsYXBwbHkoMToxMDAwMCwgc2FtcGxlX21lYW4pKVxuYGBgIn0= -->
-<pre class="r"><code>system.time(mclapply(1:10000, sample_mean))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3lzdGVtLnRpbWUobWNsYXBwbHkoMToxMDAwMCwgc2FtcGxlX21lYW4pKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r system.time(mclapply(1:10000, sample_mean))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiICAgdXNlciAgc3lzdGVtIGVsYXBzZWQgXG4gIDYuOTYwICAgMC4yMzkgICA3LjY2MiBcbiJ9 -->
 <pre><code>   user  system elapsed 
