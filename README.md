@@ -2,7 +2,7 @@
 
 A course explaining how to profile, optimise and parallelise your R code, and run it on the cloud and HPC.
 
-* **Part 1:** See the Presentation on how to make your code run faster in your computer [here](https://github.com/resbaz/high-performance-r-course/blob/master/Part1_Presentation.html)
+* **Part 1:** See the Presentation on how to make your code run faster in your computer [here](https://resbaz.github.io/high-performance-r-course/Part1_Presentation.html)
     + Corresponding challenges with solutions ([here](https://resbaz.github.io/high-performance-r-course/Challenges.nb.html))
 
 
