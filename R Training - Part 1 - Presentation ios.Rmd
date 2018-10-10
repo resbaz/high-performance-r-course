@@ -328,21 +328,28 @@ detectCores()
 
 ## Forking Example 
 
-```{r echo=FALSE}
+We will run this function 1000 times and see if parallelisation speeds things up.
+
+```{r}
 library(lme4)
 f <- function(i) {
   lmer(Petal.Width ~ . - Species + (1 | Species), data = iris)
 }
 ```
-Microbenchmark provides some weird results if used here. Any ideas why?
 
+## Forking Example
+
+- Serial
 ```{r}
 system.time(save1 <- lapply(1:1000, f))
 ```
 
+- Parallel
 ```{r}
 system.time(save2 <- mclapply(1:1000, f))
 ```
+
+Microbenchmark provides some weird results if used here. Any ideas why?
 
 <div class="notes">
 `mclapply` takes an argument, `mc.cores`. By default, `mclapply` will use all cores available to it. 

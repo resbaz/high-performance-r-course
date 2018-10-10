@@ -3,6 +3,10 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 # Challenge 1
 
 **Read new_diamonds dataset and see compute time differences when specifying columns while using read.csv(). Do this analysis using profvis.**
