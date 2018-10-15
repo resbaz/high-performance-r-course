@@ -12,6 +12,3 @@ A course explaining how to make your R-Code run faster.
 
 
 * **Part 2:** Cloud and HPC at Melbourne University [here](http://htmlpreview.github.io/?https://github.com/resbaz/high-performance-r-course/blob/master/Part2_HPC.html)
-
-TODO: HPC bit is missing in the repository.
-Work-in-progress.
