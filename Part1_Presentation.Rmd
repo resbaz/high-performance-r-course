@@ -447,7 +447,11 @@ If everything else is still not enough then....
     - Parallelise.
     - If still not enough: Use High Performance Computers (e.g Spartan)! 
 
+## Run your code on HPC (Spartan)
 
+- [Spartan Documentation](https://dashboard.hpc.unimelb.edu.au/)
+- [Intro to Spartan](https://doi90.github.io/lodestar/introduction-to-spartan.html) by David Wilkinson
+- [Installing R packages on Spartan](https://doi90.github.io/lodestar/installing-r-packages-on-spartan.html) by David Wilkinson
 
 ## Other....
 
