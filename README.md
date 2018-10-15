@@ -2,8 +2,8 @@
 
 A course explaining how to make your R-Code run faster. 
 * We explore how to profile (where are the bottlenecks) and optimise your code. 
-* We also explore how to use make the best of your computer's power with parallelisation.
-* The final part of the course explores what other options there are @unimelb for running your code in the cloud or at a high preformance computer.
+* We also explore how to make the best of your computer's power with parallelisation.
+* The final part of the course explores what other options there are @unimelb for running your code in the cloud or at a high performance computer.
 
 ### The Material is divided into two sections
 
