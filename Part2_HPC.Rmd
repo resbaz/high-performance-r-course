@@ -62,6 +62,11 @@ For self-training, check out http://training.nectar.org.au/
 Or be notified of next in-person training at: http://melbourne.resbaz.edu.au/participate
 
 # HPC Resources
-Documentation and account signup instructions at: https://dashboard.hpc.unimelb.edu.au/
+
+* Documentation and account signup instructions at: https://dashboard.hpc.unimelb.edu.au/
+
+* [Intro to Spartan](https://doi90.github.io/lodestar/introduction-to-spartan.html) by David Wilkinson
+
+* [Installing R packages on Spartan](https://doi90.github.io/lodestar/installing-r-packages-on-spartan.html) by David Wilkinson
 
 We run dedicated HPC training, including introduction to Linux command line, signup at: http://melbourne.resbaz.edu.au/participate
